@@ -1,3 +1,4 @@
+#classe pour les joueurs ennemis / les 2 joueurs de app.rb
 class Player
     attr_accessor :name, :life_points
     @@enemies = []
@@ -11,7 +12,7 @@ class Player
     def Player.all()
         return @@enemies
     end
-
+# pour avoir les points de vie de base (changement de phrase pour showstate)
     def initial_life()
         return "#{@name} a #{@life_points} vies"
     end
@@ -20,6 +21,7 @@ class Player
         return "#{@name} n'a plus que #{@life_points} vies"
     end
 
+    # méthode qui s'adapte (execute) en fonction de l'état des joueurs
     def gets_damage(number)
         if @life_points <= 0
             puts "#{@name} a été tué..."
@@ -30,6 +32,7 @@ class Player
         end
     end
 
+    # pour que le joueur attaque ou les ennemis attaquent le joueur
     def attacks(player)
         puts "#{@name} attaque #{player.name}"
         number_attack = compute_damage()
@@ -38,12 +41,14 @@ class Player
         player.gets_damage(number_attack)
     end
 
+    # création d'un dé pour avoir des attaques aléatoires
     def compute_damage
         return rand(1..6)
     end
 
 end
 
+#pour app_2 et app_3 : ajout du joueur humain
 class HumanPlayer < Player
     attr_accessor :weapon_level
     @@HumanPlayer = []

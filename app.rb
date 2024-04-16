@@ -11,6 +11,7 @@ def perform()
     puts player2.initial_life
     puts "\nPassons au combat !"
     i = 0
+    # boucle pour rassembler toutes les actions et qu'elles se répétent jusqu'a ce que un des deux meurt
     while player1.life_points > 0 || player2.life_points > 0
         puts "Round #{i}"
         player2.attacks(player1)

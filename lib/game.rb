@@ -1,8 +1,9 @@
 require_relative 'player'
 
+
 class Game
     attr_accessor :cheat_human
-
+# Méthode pour la création du joueur humain + création automatique des ennemis
     def initialize(name_human)
         @cheat_human = HumanPlayer.new(name_human)
         player1 = Player.new("José")
@@ -10,7 +11,8 @@ class Game
         player3 = Player.new("Clodette")
         player4 = Player.new("Jean-Pierre")
     end
-
+    
+    # Méthode pour supprimer un ennemi du tableau s'il est mort  
     def kill_player()
         Player.all.each do |player|
             if player.life_points <= 0
@@ -19,6 +21,7 @@ class Game
         end
     end
 
+    # méthode pour savoir si la partie continue ou non (pas encore utilisée)
     def is_still_ongoing?()
         find = false
         if Player.all == [] && self.life_points > 0
@@ -30,12 +33,14 @@ class Game
         return find
     end
 
+    # méthode pour voir l'état du jeu (pour le joueur humain et le nb n'ennemi qui lui reste)    
     def show_players()
         puts "\nVoyons ton état cheaté..."
             puts "Tu as #{@cheat_human.check_life_points} points de vie\n"
         puts "Il te reste #{Player.all.length} ennemies à tuer"
     end
 
+    # méthode pour le menu présentant les choix au joueur
     def human_menu(i)
         puts "\nRound #{i}"
         puts "Quelle action veux-tu effectuer ?"
@@ -48,11 +53,12 @@ class Game
         puts "d - #{Player.all[3].showstate}" if Player.all[3]
     end
 
-
+    # méthode pour enregistrer l'entrée du joueur via le gets.chomp (pour pouvoir retourner à nouveau dessus s'il y a une erreur de saisie)
     def choice_touch_action()
         return action = gets.chomp
     end
     
+    # méthode qui execute les actions que veut le joueur + utilisation de la méthode kill_player
     def human_choice_action()
         action = choice_touch_action()
         if action == "1"
@@ -74,6 +80,7 @@ class Game
         kill_player() 
     end
 
+    # méthode pour que tous les ennemis attaquent à la suite
     def enemies_attacks()
         puts "Les autres joueurs t'attaquent !"
         Player.all.each do |player|
@@ -84,6 +91,7 @@ class Game
             end
     end
 
+    # méthode pour la fin de partie
     def end_game()
         puts "La partie est terminé"
         if @cheat_human.check_life_points > 0

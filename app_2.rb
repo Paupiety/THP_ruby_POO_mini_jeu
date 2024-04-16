@@ -3,10 +3,12 @@ require_relative "lib/player"
 require_relative "lib/game"
 Bundler.require
 
+# méthode pour enregistrer l'entrée du joueur via le gets.chomp (pour pouvoir retourner à nouveau dessus s'il y a une erreur de saisie)
 def choice_touch_action()
     return action = gets.chomp
 end
 
+# méthode pour le menu présentant les choix au joueur
 def human_menu(i, player1, player2)
     puts "\nRound #{i}"
     puts "Quelle action veux-tu effectuer ?"
@@ -17,6 +19,7 @@ def human_menu(i, player1, player2)
     puts "b - #{player2.showstate}" if player2.life_points > 0
 end
 
+# méthode qui execute les actions que veut le joueur + utilisation de la méthode kill_player
 def human_choice_action(player1, player2, cheat_human)
     action = choice_touch_action()
     if action == "1"
@@ -34,6 +37,7 @@ def human_choice_action(player1, player2, cheat_human)
     
 end
 
+#fonction pour créer le joueur humain
 def creation_cheat_human()
     puts "Quel est ton prénom ?"
     humanplayer = gets.chomp
@@ -41,11 +45,13 @@ def creation_cheat_human()
     return cheat_human
 end
 
+#fonction pour créer en auto le 1er ennemi
 def creation_player1()
     player1 = Player.new("José")
     return player1
 end
 
+#fonction pour créer en auto le 2nd ennemi
 def creation_player2()
     player2 = Player.new("Josiane")
     return player2
@@ -63,6 +69,7 @@ def perform()
     puts "\nPassons au FIGHT !"
 
     i = 1
+    # boucle pour rassembler toutes les actions et qu'elles se répétent jusqu'a ce que un des deux meurt
     while player1.life_points > 0 && player2.life_points > 0 || cheat_human.life_points > 0
 
         puts "\nVoyons ton état cheaté..."

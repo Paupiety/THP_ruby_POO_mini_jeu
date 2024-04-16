@@ -17,6 +17,7 @@ def perform()
 
     i = 1
 
+    # boucle pour rassembler toutes les actions et qu'elles se répétent jusqu'a ce que un des deux meurt
     while Player.all.length > 0 || @cheat_human.check_life_points > 0
 
         my_game.show_players()
