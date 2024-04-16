@@ -3,7 +3,6 @@ class Player
     attr_accessor :name, :life_points
     @@enemies = []
     def initialize(player_name)
-        enemies = []
         @name = player_name
         @life_points = 10
         @@enemies << self

@@ -1,6 +1,5 @@
 require_relative 'player'
 
-
 class Game
     attr_accessor :cheat_human
 # Méthode pour la création du joueur humain + création automatique des ennemis
