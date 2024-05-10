@@ -1,12 +1,23 @@
+# Mini jeu dans le terminal
 
-app.rb :
-Contient le fichier lib/player
-Il permet d'executer toutes les commandes du jeu avec la création des joueurs en automatiques. On peut visualiser une partie entre deux joueurs.
+## Overview
 
-app_2.rb :
-Contient le fichier lib/player
-Evolution de app.rb : un nouveau joueur a été intégré "HumanPlayer" et joue contre les deux joueurs de app.rb qui se retrouvent cette fois-ci ensemble.
+Ce mini jeu permet de réaliser des parties contre deux ou plusieurs bots. Il existe 3 versions du jeu.
 
-app_3.rb :
-Contient le fichier lib/player + lib/game
-Evolution de app_3.rb : le nombre d'ennemis de HumanPlayer a doublé. Sinon tout est pareil sauf que nous avons réalisés un tri des méthodes pour que la lecture soit plus simple (avec le rajout de lib/game)
+## Get started
+
+````sh
+bundler install # installer les dépendances
+ruby nom_du_fichier.rb # Commencer des parties suivant la version que l'on veut tester
+````
+
+## arborescence de ce qui nous intéresse
+
+````sh
+/lib
+    /game.rb #Class game qui gère les parties
+    /player.rb #Class player qui gère les joueurs
+/app.rb #V1 du jeu : Création de joueurs en auto. Visualisation d'une partie auto entre deux bots.
+/app_2.rb #V2 du jeu : Nouveau joueur : HumanPlayer. Joue contre les 2 bots.
+/app_3.rb #V3 du jeu : Nombre de bots doublé. Tri des méthodes car ajout de la class Game.
+````
